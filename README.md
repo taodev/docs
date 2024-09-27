@@ -1,4 +1,9 @@
 # docs
+## linux
+### 关闭ssh欢迎输出
+```bash
+touch .hushlogin
+```
 ## 软件破解
 ### SublimeText 4.0
 - Build: 4180
