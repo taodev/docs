@@ -1,7 +1,7 @@
 # docs
 ## 软件破解
 ### SublimeText 4.0
-- Build: 4190
+- Build: 4180
 - Step:
   - x64dbg打开sublime_text.exe搜索**update_check**
 ```
