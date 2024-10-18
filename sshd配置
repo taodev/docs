@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# 修改主机名
+hostnamectl set-hostname dev
+
+# 修改sshd_config
+sed -i '/ssh_host_rsa_key/ s/HostKey/#HostKey/' /etc/ssh/sshd_config
+sed -i '/ssh_host_ecdsa_key/ s/HostKey/#HostKey/' /etc/ssh/sshd_config
+sed -i 's/#AllowTcpForwarding/AllowTcpForwarding/' /etc/ssh/sshd_config
+sed -i 's/#GatewayPorts no/GatewayPorts yes/' /etc/ssh/sshd_config
+sed -i 's/#TCPKeepAlive yes/TCPKeepAlive yes/' /etc/ssh/sshd_config
+sed -i 's/#ClientAliveInterval 0/ClientAliveInterval 60/' /etc/ssh/sshd_config
+sed -i 's/#ClientAliveCountMax 3/ClientAliveCountMax 10/' /etc/ssh/sshd_config
+echo "Protocol 2" >> /etc/ssh/sshd_config
+systemctl restart sshd
+
+# 添加登陆密钥
+echo "" >> .ssh/authorized_keys
